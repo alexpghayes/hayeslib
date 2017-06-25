@@ -1,0 +1,85 @@
+---
+title: "dplyr 0.6 reference notebook"
+author: "Alex Hayes"
+date: "May 19, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+This reference reflects my understanding of the idiomatic patterns for dplyr 0.6. Worth taking with a grain of salt. More info at the [programming with dplyr and tidyeval vignette][1].
+
+```{r, message = FALSE}
+# install.packages("rlang")
+library(tidyverse)
+
+dat <- data.frame(cat = sample(LETTERS[1:2], 50, replace = TRUE),
+                  cat2 = sample(LETTERS[3:4], 50, replace = TRUE),
+                  value = rnorm(50))
+```
+
+### Representing column/variable names with strings
+
+Convert strings to symbol objects using `rlang::sym` and `rlang::syms`. 
+
+```{r}
+summ_var <- "value"
+group_vars <- c("cat", "cat2")
+
+summ_sym <- rlang::sym(summ_var)  # capture a single symbol
+group_syms <- rlang::syms(group_vars)  # creates list of symbols
+
+dat %>%
+  group_by(!!!group_syms) %>%  # splice list of symbols into a function call
+  summarize(summ = sum(!!summ_sym)) # slice single symbol into call
+```
+
+If you use `!!` or `!!!` outside of `dplyr` functions you will get an error.
+
+The usage of `rlang::sym` and `rlang::syms` is identical inside functions.
+
+```{r}
+summarize_by <- function(df, summ_var, group_vars) {
+
+  summ_sym <- rlang::sym(summ_var)
+  group_syms <- rlang::syms(group_vars)
+
+  df %>%
+    group_by(!!!group_syms) %>%
+    summarize(summ = sum(!!summ_sym))
+}
+
+summarize_by(dat, "value", c("cat", "cat2"))
+```
+
+### Using non-standard evaluation for column/variable names
+
+```{r}
+summ_quo <- quo(value)  # capture a single variable for NSE
+group_quos <- quos(cat, cat2)  # capture list of variables for NSE
+
+dat %>%
+  group_by(!!!group_quos) %>%  # use !!! with both quos and rlang::syms
+  summarize(summ = sum(!!summ_quo))  # use !! both quo and rlang::sym
+```
+
+### Inside functions use `enquo` rather than `quo`. `quos` is okay though!?
+
+
+```{r}
+summarize_by <- function(df, summ_var, ...) {
+
+  summ_quo <- enquo(summ_var)  # can only capture a single value!
+  group_quos <- quos(...)  # captures multiple values, also inside functions!?
+
+  df %>%
+    group_by(!!!group_quos) %>%
+    summarize(summ = sum(!!summ_quo))
+}
+
+summarize_by(dat, value, cat, cat2)
+```
+
+[1]: http://dplyr.tidyverse.org/articles/programming.html
