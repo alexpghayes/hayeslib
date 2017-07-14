@@ -1,43 +1,22 @@
 # hayeslib
-personal r functions and r package experimentation
 
-# Notes to Others
+This package is for personal experimentation, inspired by Hilary Parker's [Writing an R package from scratch](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/) post.
 
-list of functions that other people might care about
+Currently the package is serving as a somewhat messy code and notes repository. I'm in the process of turning the code snippets into documented and tested functions.
 
+Advice on good practices welcome.
 
-# Notes to Self
+# What should happen next
 
-Stuff to check out
+* `show_dir`: nicely output directory structure
+* `combine`: type happiness?
+* `perc`: vectors, and count/tally like
+* `retype`: rename and type convert at once
+* `replace_if`: if condition, replace with value, otherwise leave be, vectorized
+* `count_if`: count when predicate occurs for tidyselected columns
+* `ggpie`: upgrade to tidyeval handle labels better (i.e. just get them from a label column in the original data frame)
+* `spread_keep_`: use same doc as `spread_keep`
 
-DT::datatable(mydf, filter = "top") 
+# Functions that I find useful that you might as well
 
-How does this work?
-```
-function (...) as.character(sys.call())[-1]
-```
-
-### Index
-
-* functions live in R/
-* analyses (will) live in vignettes/
-
-### To do
-
-* clean and document and test ugh
-* normalize with select semantics
-* mutate/summarize by
-* perc - vectorize, and count/tally like
-* rename and type convert 2 in 1 combo
-
-* combine
-* spread_repeatedly
-
-Hm
-
-
-
-* classes in R
-* write and call Rcpp code
-
-* writeup first experience with Shiny with emphasis on takeaways. that should probably live on the blog 
+These will be documented here after code is cleaned up and tested.
