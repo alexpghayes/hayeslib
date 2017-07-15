@@ -43,19 +43,3 @@ rmse <- function(predicted, true) {
 logspace <- function(start, stop, num = 15, base = 10) {
   base^seq(from = start, to = stop, length.out = num)
 }
-
-
-#' Returns the sequence of indices for a vector or list object.
-#'
-#' @param x Vector or list
-#'
-#' @return Indices for vector or list input. Otherwise throws an error.
-#' @export
-#'
-#' @examples
-#' indices(c("mouse", "cat", "dog"))
-#'
-indices <- function(x) {
-  if (!is.vector(x)) stop("Must input a vector")
-  1:length(x)
-}

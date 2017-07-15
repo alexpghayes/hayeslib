@@ -3,7 +3,6 @@
 export(combine)
 export(count_non_na)
 export(ggpie)
-export(indices)
 export(logspace)
 export(lzy_chr)
 export(lzy_impute)
