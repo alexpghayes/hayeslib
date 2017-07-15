@@ -19,10 +19,3 @@ ungrouped data frame containing results of grouped summary
 \description{
 Mutate by group with less boilerplate
 }
-\examples{
-
-data_frame(cat = sample(c("A", "B"), 50, replace = TRUE),
-           value = rnorm(50)) \%>\%
-  mutate_by(cat, new = sum(value))
-
-}

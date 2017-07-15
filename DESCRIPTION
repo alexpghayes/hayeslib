@@ -5,12 +5,17 @@ Authors@R: person("Alex", "Hayes", email = "alexpghayes@gmail.com", role = c("au
 Description: Personal utility functions and data analyses.
 Imports:
     dplyr (>= 0.5.0.9005),
-    ggplot2 (>= 2.2.0)
-License: MIT
+    ggplot2 (>= 2.2.0),
+    magrittr,
+    rlang,
+    tibble,
+    tidyr
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown,
-    testthat
+    testthat,
+    covr
 VignetteBuilder: knitr

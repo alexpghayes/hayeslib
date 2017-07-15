@@ -2,13 +2,14 @@
 #'
 #' Exactly the same as Hmisc::Cs except ain't nobody got time to import that.
 #'
-#' @param ...
+#' @param ... Bared, comma separated strings
 #'
 #' @return The bare code you wrote, but comma separated
 #' @export
 #'
 #' @examples
-#' lzy_chr(this, will, become, a, character, vector!)
+#' lzy_chr(this, will, become, a, character, vector)
+#'
 lzy_chr <- function(...) {
   as.character(sys.call())[-1]
 }
@@ -21,6 +22,7 @@ lzy_chr <- function(...) {
 #'
 #' @return RMSE between true and predicted values
 #' @export
+#'
 rmse <- function(predicted, true) {
   sqrt(mean((predicted - true)^2))
 }
@@ -40,6 +42,7 @@ rmse <- function(predicted, true) {
 #'
 #' @examples
 #' logspace(-5, 5)
+#'
 logspace <- function(start, stop, num = 15, base = 10) {
   base^seq(from = start, to = stop, length.out = num)
 }

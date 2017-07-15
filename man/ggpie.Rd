@@ -21,20 +21,3 @@ ggplot2 object
 \description{
 Please only do this if forced to do so by a boss, etc.
 }
-\examples{
-
-example <- data.frame(
-  resps = c("A", "A", "A", "F", "C", "C", "D", "D", "E"),
-  cond = c(rep("cat A", 5), rep("cat B", 4))
-)
-
-ex_labs <- c("alpha", "charlie", "delta", "echo", "foxtrot")
-
-ggpie(example, main = "resps", labels) +
-  labs(title = "unfacetted example")
-
-ex_labs2 <- c("alpha", "charlie", "foxtrot", "delta", "charlie", "echo")
-
-ggpie(example, main = "resps", labels = ex_labs2, condition = "cond") +
-  labs(title = "facetted example")
-}

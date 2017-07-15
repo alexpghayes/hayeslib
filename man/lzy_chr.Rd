@@ -7,7 +7,7 @@
 lzy_chr(...)
 }
 \arguments{
-\item{...}{}
+\item{...}{Bared, comma separated strings}
 }
 \value{
 The bare code you wrote, but comma separated
@@ -16,5 +16,5 @@ The bare code you wrote, but comma separated
 Exactly the same as Hmisc::Cs except ain't nobody got time to import that.
 }
 \examples{
-lzy_chr(this, will, become, a, character, vector!)
+lzy_chr(this, will, become, a, character, vector)
 }

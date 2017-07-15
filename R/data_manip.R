@@ -37,12 +37,6 @@ combine <- function(df, col, ..., fun, remove = TRUE) {
 #' @return ungrouped data frame containing results of grouped summary
 #' @export
 #'
-#' @examples
-#'
-#' data_frame(cat = sample(c("A", "B"), 50, replace = TRUE),
-#'            value = rnorm(50)) %>%
-#'   mutate_by(cat, new = sum(value))
-#'
 summarize_by <- function(df, group_var, ...) {
   df <- dplyr::group_by(df, !!enquo(group_var))
   dplyr::summarize(df, !!!quos(...))
@@ -57,12 +51,6 @@ summarize_by <- function(df, group_var, ...) {
 #'
 #' @return ungrouped data frame containing results of grouped summary
 #' @export
-#'
-#' @examples
-#'
-#' data_frame(cat = sample(c("A", "B"), 50, replace = TRUE),
-#'            value = rnorm(50)) %>%
-#'   mutate_by(cat, new = sum(value))
 #'
 mutate_by <- function(df, group_var, ...) {
   df <- dplyr::group_by(df, !!enquo(group_var))

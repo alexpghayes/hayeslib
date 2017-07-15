@@ -33,22 +33,6 @@ var_plot <- function(rf) {
 #' @export
 #' @import ggplot2 dplyr
 #'
-#' @examples
-#'
-#' example <- data.frame(
-#'   resps = c("A", "A", "A", "F", "C", "C", "D", "D", "E"),
-#'   cond = c(rep("cat A", 5), rep("cat B", 4))
-#' )
-#'
-#' ex_labs <- c("alpha", "charlie", "delta", "echo", "foxtrot")
-#'
-#' ggpie(example, main = "resps", labels) +
-#'   labs(title = "unfacetted example")
-#'
-#' ex_labs2 <- c("alpha", "charlie", "foxtrot", "delta", "charlie", "echo")
-#'
-#' ggpie(example, main = "resps", labels = ex_labs2, condition = "cond") +
-#'   labs(title = "facetted example")
 ggpie <- function(df, main, labels = NULL, condition = NULL) {
 
   warning("Please do not use pie charts if you have any other option.")
