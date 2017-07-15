@@ -1,8 +1,11 @@
 # hayeslib
 
-[![Travis-CI Build Status](https://travis-ci.org/alexpghayes/hayeslib.svg?branch=master)](https://travis-ci.org/alexpghayes/hayeslib)
+---
 
+[![Travis-CI Build Status](https://travis-ci.org/alexpghayes/hayeslib.svg?branch=master)](https://travis-ci.org/alexpghayes/hayeslib)
 [![Coverage Status](https://img.shields.io/codecov/c/github/alexpghayes/hayeslib/master.svg)](https://codecov.io/github/alexpghayes/hayeslib?branch=master)
+
+---
 
 This package is for personal experimentation, inspired by Hilary Parker's [Writing an R package from scratch](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/) post.
 
