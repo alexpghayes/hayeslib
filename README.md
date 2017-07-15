@@ -30,3 +30,4 @@ Currently the package is serving as a somewhat messy code and notes repository. 
 * How and when to use branches during package development (especially in case people actually end up using your code and you need things to be stable)
 * Using the Github issues, projects, wiki ecosystem
 * update gentle tidyeval: adding select/mutate semantics, cleanup, note that things may change, also maybe use tufte-esque blogdown theme
+* `quo`/`sym` as per Hadley's tweet - i.e. prefix/suffix not necessary
