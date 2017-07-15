@@ -1,11 +1,7 @@
 # hayeslib
 
----
-
 [![Travis-CI Build Status](https://travis-ci.org/alexpghayes/hayeslib.svg?branch=master)](https://travis-ci.org/alexpghayes/hayeslib)
 [![Coverage Status](https://img.shields.io/codecov/c/github/alexpghayes/hayeslib/master.svg)](https://codecov.io/github/alexpghayes/hayeslib?branch=master)
-
----
 
 This package is for personal experimentation, inspired by Hilary Parker's [Writing an R package from scratch](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/) post.
 
@@ -23,12 +19,9 @@ Currently the package is serving as a somewhat messy code and notes repository. 
 * `ggpie`: upgrade to tidyeval handle labels better (i.e. just get them from a label column in the original data frame)
 * `spread_keep_`: use same doc as `spread_keep`
 * README: document functions that other people might find useful
-* Pass R CMD check
 * ALL THE BADGES
 * Installation instructions
 * Example usages
-* Automatic integration with Travis CI / Appveyor
-* Automatic code coverage testing
 * Using `pkgdown`
 * How and when to use branches during package development (especially in case people actually end up using your code and you need things to be stable)
 * Using the Github issues, projects, wiki ecosystem

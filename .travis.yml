@@ -3,3 +3,12 @@
 language: R
 sudo: false
 cache: packages
+
+r_binary_packages:
+  - devtools
+  - tidyverse
+  - Rcpp
+  - bindrcpp
+
+after_success:
+  - Rscript -e 'covr::codecov()'
