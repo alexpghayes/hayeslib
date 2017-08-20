@@ -17,4 +17,5 @@ Exactly the same as Hmisc::Cs except ain't nobody got time to import that.
 }
 \examples{
 lzy_chr(this, will, become, a, character, vector)
+
 }

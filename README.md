@@ -27,3 +27,9 @@ Currently the package is serving as a somewhat messy code and notes repository. 
 * Using the Github issues, projects, wiki ecosystem
 * update gentle tidyeval: adding select/mutate semantics, cleanup, note that things may change, also maybe use tufte-esque blogdown theme
 * `quo`/`sym` as per Hadley's tweet - i.e. prefix/suffix not necessary
+
+### Less developed thoughts
+
+fit univariate model on many different features
+num_levels <- function(df, var) print(dim(distinct(df, !!enquo(var)))[1]), option filter out na
+model_tibble wrapper

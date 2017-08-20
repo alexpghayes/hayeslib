@@ -7,5 +7,5 @@
 NULL
 
 .onAttach <- function(libname, pkgname) {
-  packageStartupMessage("Welcome to Hayeslib.")
+  packageStartupMessage("Welcome to hayeslib.")
 }

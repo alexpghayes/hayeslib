@@ -6,7 +6,7 @@
 #' @export
 #' @import ggplot2
 var_plot <- function(rf) {
-  stopifnot(class(rf) == "ranger")
+  stopifnot(inherits(rf, "ranger"))
 
   rf$variable.importance %>%
     tibble::enframe() %>%
@@ -35,7 +35,8 @@ var_plot <- function(rf) {
 #'
 ggpie <- function(df, main, labels = NULL, condition = NULL) {
 
-  warning("Please do not use pie charts if you have any other option.")
+  warning("Please do not use pie charts if you have any other option.",
+          call. = FALSE)
 
   df <- group_by_(df, .dots = c(condition, main)) %>%
     summarize(counts = n()) %>%

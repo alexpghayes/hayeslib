@@ -8,36 +8,32 @@
 #'
 #' @return data frame with mean imputed data and possibly missingness indicators
 #' @export
+#' @importFrom rlang expr sym
+#' @importFrom dplyr select_vars tbl_vars
+#' @importFrom purrr map
 #'
 lzy_impute <- function(df, ..., indicate = TRUE) {
 
-  warning("This function is loaded gun aimed at your foot.")
-  to_impute <- select_vars(tbl_vars(df), !!!quos(...))
+  warning("This function is loaded gun aimed at your foot.", call. = FALSE)
 
-  for (var_name in to_impute) {
-    indic_name <- paste0(var_name, "_ind")
-    if (indicate) df <- dplyr::mutate(df, !!indic_name := !is.na(!!iv_q))
-    df <- dplyr::mutate(
-      df,
-      !!var_name := if_else(
-        is.na(!!var_name),
-        mean(!!var_name, na.rm = TRUE)),
-        !!var_name
-      )
+  dots <- quos(...)
+  to_impute <- select_vars(tbl_vars(df), !!!dots)
+
+  if (indicate) {
+    ind_calls <- map(to_impute, ~expr(is.na(!!sym(.x))))
+    names(ind_calls) <- paste0(to_impute, "_ind")
+    df <- mutate(df, !!!ind_calls)
   }
-  df
-}
 
+  make_impute_call <- function(name) {
+    name <- sym(name)
+    expr(if_else(is.na(!!name), mean(!!name, na.rm = TRUE), !!name))
+  }
 
-#' Summarize missing data in each column of a dataframe
-#'
-#' @param df A dataframe
-#'
-#' @return A summary dataframe containing missing counts
-#' @export
-#'
-missing_counts <- function(df) {
-  dplyr::summarise_all(df, ~sum(is.na(.x)))
+  impute_calls <- map(to_impute, make_impute_call)
+  names(impute_calls) <- to_impute
+
+  mutate(df, !!!impute_calls)
 }
 
 
@@ -52,6 +48,20 @@ count_non_na <- function(x) {
   if (all(is.na(x))) return(0)
   sum(!is.na(x))
 }
+
+
+#' Summarize missing data in each column of a dataframe
+#'
+#' @param df A dataframe
+#'
+#' @return A summary dataframe containing missing counts
+#' @export
+#'
+na_counts <- function(df) {
+  dplyr::summarise_all(df, ~sum(is.na(.x)))
+}
+
+
 
 
 #' Remove all NA values for a vector

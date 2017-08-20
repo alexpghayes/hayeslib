@@ -17,13 +17,14 @@
 #' argument columns element-wise
 #' @export
 #'
-combine <- function(df, col, ..., fun, remove = TRUE) {
-  to_merge <- quos(...)
-  new_col <- quo_name(enquo(col))
-  merge_cols <- map_chr(to_merge, quo_name)
+unite_at <- function(df, col, ..., .f, remove = TRUE) {
+  merge_chrs <- dplyr::select_vars(dplyr::tbl_vars(df), !!!quos(...))
+  merge_syms <- rlang::syms(to_merge)
+  new_col <- enquo(col)
 
-  df <- mutate(df, !!new_col := pmap_chr(list(!!!to_merge), fun))
-  if (remove) df <- select(df, -one_of(merge_cols))
+  df <- mutate(df, quo_name(new_col) := simplify(pmap(list(!!!merge_syms), .f))
+  )
+  if (remove) df <- select(df, -one_of(merge_chrs))
   df
 }
 
@@ -96,8 +97,8 @@ top_n_groups <- function(df, group_var, val_var, val_fun = sum) {
 #' rand_n_groups(mtcars, cyl, 2)
 #'
 rand_n_groups <- function(df, group_var, n) {
-  group_quo <- rlang::enquo(group_var)
-  groups <- pull(distinct(df, !!group_quo))
+  group_var <- rlang::enquo(group_var)
+  groups <- pull(distinct(df, !!group_var))
 
   if (n > length(groups)) {
     message("N greater than number of groups, returning original dataframe.")
@@ -118,10 +119,10 @@ rand_n_groups <- function(df, group_var, n) {
 #' @export
 #'
 spread_keep <- function(df, key, value, ...) {
-  key_quo <- enquo(key)
-  df$.dummy <- dplyr::pull(df, !!key_quo)
-  df <- tidyr::spread_(df, quo_name(key_quo), quo_name(enquo(value)), ...)
-  dplyr::rename(df, !!quo_name(key_quo) := .dummy)
+  key <- enquo(key)
+  df <- dplyr::mutate(df, .dummy = !!key)
+  df <- tidyr::spread_(df, quo_name(key), quo_name(enquo(value)), ...)
+  dplyr::rename(df, !!quo_name(key) := .dummy)
 }
 
 #' Spread, but keeps the key column and uses standard evaluation
@@ -135,7 +136,7 @@ spread_keep <- function(df, key, value, ...) {
 #' @export
 #'
 spread_keep_ <- function(df, key, value, ...) {
-  df$.dummy <- pull(df, key)
+  df <- dplyr::mutate(df, .dummy = !!rlang::sym(key))
   df <- tidyr::spread_(df, key, quo, ...)
   dplyr::rename(df, !!key := .dummy)
 }
