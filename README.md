@@ -7,6 +7,8 @@ This package is for personal experimentation, inspired by Hilary Parker's [Writi
 
 Currently the package is serving as a somewhat messy code and notes repository. I'm in the process of turning the code snippets into documented and tested functions.
 
+trivial change to see if need to push again to get site to build
+
 ### Next steps
 * Document and test current functions, clean up pkgdown site
 * Rcpp MVN/dirichlet samplers/r/p/q functions, nicely parameterized t-dists
