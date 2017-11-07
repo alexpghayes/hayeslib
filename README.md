@@ -8,7 +8,7 @@ This package is for personal experimentation, inspired by Hilary Parker's [Writi
 Currently the package is serving as a somewhat messy code and notes repository. I'm in the process of turning the code snippets into documented and tested functions.
 
 ### Next steps
-
+* Rcpp MVN/dirichlet samplers/r/p/q functions, nicely parameterized t-dists
 * `zeros_like` and `ones_like` as in Numpy
 * `show_dir`: nicely output directory structure
 * `combine`: type happiness?
