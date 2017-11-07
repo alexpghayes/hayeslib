@@ -1,0 +1,53 @@
+---
+title: "MCMC Stub"
+author: "Alex Hayes"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Stub example for `mcmc_` functions
+
+Suppose you generate some MCMC samples of params
+
+```{r}
+library(hayeslib)
+library(tidyverse)  # hack for now
+library(coda)
+
+num_samples <- 10^3
+
+postr <- tibble(alpha = rnorm(num_samples),
+                beta = rnorm(num_samples))
+
+postr %>% 
+  mcmc_trace()
+```
+
+Get it to a form that nice for easy mapping
+
+```{r}
+postr %>% 
+  t_mcmc()
+```
+
+MCMC simple summary for plotting
+
+```{r}
+postr %>% 
+  t_mcmc() %>% 
+  mcmc_stats()
+```
+
+Do the plotting
+
+```{r}
+postr %>% 
+  t_mcmc() %>% 
+  mcmc_stats() %>% 
+  mcmc_hpd_int()
+```
+

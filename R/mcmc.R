@@ -1,4 +1,4 @@
-# TODO: this all needs to be documented and tested
+# TODO: this all needs to be documented and tested. need to import dependencies!
 
 #' @export
 mcmc_trace <- function(postr) {
