@@ -1,3 +1,23 @@
+#' @export
+perc <- function(df, ..., sort = FALSE) {
+  df %>%
+    count(!!!quos(...)) %>%
+    mutate(perc = n / sum(n)) %>%
+    select(-n)
+}
+
+
+function (x, ..., wt = NULL, sort = FALSE)
+{
+  groups <- group_vars(x)
+  x <- group_by(x, ..., add = TRUE)
+  x <- tally(x, wt = !(!enquo(wt)), sort = sort)
+  x <- group_by(x, !(!(!syms(groups))), add = FALSE)
+  x
+}
+
+count
+
 #' Semi-general \code{unite} to vectorize a function across columns of dataframe
 #'
 #' Accepts columns from a dataframe and vectorizes/parallel maps a function

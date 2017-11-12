@@ -1,5 +1,10 @@
 # TODO: test and document
 
+#' @export
+quad_form <- function(A, x) {
+  colSums(x * (A %*% x))
+}
+
 #' Returns evenly spaced numbers.
 #'
 #' This wraps seq trivially. What can I say, I like the Numpy API.
@@ -47,5 +52,10 @@ zeros_like <- function(x) {
 #' @export
 ones_like <- function(x) {
   array(1, dim(x))
+}
+
+#' @export
+allclose <- function(x, y, tol = 1e-12) {
+  all(x - y < tol)
 }
 
