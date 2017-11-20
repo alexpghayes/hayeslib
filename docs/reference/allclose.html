@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Spread, but keep the key column — spread_keep â€¢ hayeslib</title>
+<title>Check whether all elements of array or vector like objects are the same — allclose â€¢ hayeslib</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -90,39 +90,37 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Spread, but keep the key column</h1>
+    <h1>Check whether all elements of array or vector like objects are the same</h1>
     </div>
 
     
-    <p>Spread, but keep the key column</p>
+    <p>i.e. within a small but non-zero tolerance of each other</p>
     
 
-    <pre class="usage"><span class='fu'>spread_keep</span>(<span class='no'>df</span>, <span class='no'>key</span>, <span class='no'>value</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>allclose</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fl'>1e-12</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>data frame</p></td>
+      <th>x</th>
+      <td><p>First array like object</p></td>
     </tr>
     <tr>
-      <th>key</th>
-      <td><p>bare/unquoted key as in <code>spread</code></p></td>
+      <th>y</th>
+      <td><p>Second array like object</p></td>
     </tr>
     <tr>
-      <th>value</th>
-      <td><p>bare/unquoted value as in <code>spread</code></p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>additional arguments to <code>spread</code></p></td>
+      <th>tol</th>
+      <td><p>Acceptable difference between individual elements of <code>x</code>
+and <code>y</code></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>spread data frame with key column retained</p>
+    <p>logical indicating if values are elementwise within <code>tol</code>
+  of each other</p>
     
 
   </div>

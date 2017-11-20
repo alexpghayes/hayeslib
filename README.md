@@ -14,7 +14,7 @@ Dear potential employers
 
 This is not what I think a R package should look like. At some point this I will turn the code here into well documented and tested functions. It's probably gonna be a while.
 
-See the Issues tab if to see what I think this package should look like.
+See the Issues tab to see what I think this package should look like.
 
 Installation
 ------------

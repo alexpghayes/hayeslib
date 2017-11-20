@@ -15,7 +15,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-home">
+    <div class="container template-vignette">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -63,57 +63,44 @@
 
       
       </header><div class="row">
-  <div class="contents col-md-9">
-    <div id="hayeslib" class="section level1">
+  <div class="col-md-9">
+    
+
+    
+    
+<div class="contents">
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+<div id="hayeslib" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#hayeslib" class="anchor"></a>hayeslib</h1></div>
 
-<p>This package is for personal experimentation, inspired by Hilary Parker’s <a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Writing an R package from scratch</a> post.</p>
-<p>Currently the package is serving as a somewhat messy code and notes repository. I’m in the process of turning the code snippets into documented and tested functions.</p>
-<div id="next-steps" class="section level3">
-<h3 class="hasAnchor">
-<a href="#next-steps" class="anchor"></a>Next steps</h3>
-<ul>
-<li>Document and test current functions, clean up pkgdown site</li>
-<li>Rcpp MVN/dirichlet samplers/r/p/q functions, nicely parameterized t-dists</li>
-<li>
-<code>show_dir</code>: nicely output directory structure</li>
-<li>
-<code>combine</code>: type happiness?</li>
-<li>
-<code>perc</code>: vectors, and count/tally like</li>
-<li>
-<code>retype</code>: rename and type convert at once</li>
-<li>
-<code>replace_if</code>: if condition, replace with value, otherwise leave be, vectorized</li>
-<li>
-<code>count_if</code>: count when predicate occurs for tidyselected columns</li>
-<li>
-<code>ggpie</code>: upgrade to tidyeval handle labels better (i.e. just get them from a label column in the original data frame)</li>
-<li>
-<code>spread_keep_</code>: use same doc as <code>spread_keep</code>
-</li>
-<li>README: document functions that other people might find useful</li>
-<li>ALL THE BADGES</li>
-<li>Installation instructions</li>
-<li>Example usages</li>
-<li>How and when to use branches during package development (especially in case people actually end up using your code and you need things to be stable)</li>
-<li>Using the Github issues, projects, wiki ecosystem</li>
-<li>update gentle tidyeval: adding select/mutate semantics, cleanup, note that things may change, also maybe use tufte-esque blogdown theme</li>
-<li>
-<code>quo</code>/<code>sym</code> as per Hadley’s tweet - i.e. prefix/suffix not necessary</li>
-</ul>
+<p><code>hayeslib</code> is a personal package inspired by Hilary Parker’s <a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Writing an R package from scratch</a> post.</p>
+<p><code>hayeslib</code> is a repository of code snippets that I find myself using frequently for common tasks (i.e. I want to use a function I wrote in more than one research report or problem set so I quickly through it in here).</p>
 </div>
-<div id="less-developed-thoughts" class="section level3">
-<h3 class="hasAnchor">
-<a href="#less-developed-thoughts" class="anchor"></a>Less developed thoughts</h3>
-<p>fit univariate model on many different features num_levels &lt;- function(df, var) print(dim(distinct(df, !!enquo(var)))[1]), option filter out na model_tibble wrapper</p>
+<div id="dear-potential-employers" class="section level1">
+<h1 class="hasAnchor">
+<a href="#dear-potential-employers" class="anchor"></a>Dear potential employers</h1>
+<p>This is not what I think a R package should look like. At some point this I will turn the code here into well documented and tested functions. It’s probably gonna be a while.</p>
+<p>See the Issues tab to see what I think this package should look like.</p>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>You can install hayeslib from github with:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"alexpghayes/hayeslib"</span>)</code></pre></div>
+</div>
+<div id="example-usage" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example-usage" class="anchor"></a>Example Usage</h2>
+<p>Eventually there will be example code here showing what I use this package for.</p>
+</div>
 </div>
 </div>
   </div>
 
-  <div class="col-md-3" id="sidebar">
-    <h2>License</h2>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2 class="hasAnchor">
+<a href="#sidebar" class="anchor"></a>License</h2>
 <p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE.html">LICENSE</a></p>
 <h2>Developers</h2>
 <ul class="list-unstyled">
@@ -125,6 +112,7 @@
 <li><a href="https://codecov.io/github/alexpghayes/hayeslib?branch=master"><img src="https://img.shields.io/codecov/c/github/alexpghayes/hayeslib/master.svg" alt="Coverage Status"></a></li>
 </ul>
 </div>
+
 </div>
 
 

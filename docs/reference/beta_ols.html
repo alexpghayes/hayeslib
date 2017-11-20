@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Spread, but keep the key column — spread_keep â€¢ hayeslib</title>
+<title>Get OLS regression coefficients — beta_ols â€¢ hayeslib</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -90,39 +90,32 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Spread, but keep the key column</h1>
+    <h1>Get OLS regression coefficients</h1>
     </div>
 
     
-    <p>Spread, but keep the key column</p>
+    <p>Assumes data matrix is tall or square, but not wide. Does not add
+  intercept.</p>
     
 
-    <pre class="usage"><span class='fu'>spread_keep</span>(<span class='no'>df</span>, <span class='no'>key</span>, <span class='no'>value</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>beta_ols</span>(<span class='no'>X</span>, <span class='no'>y</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>data frame</p></td>
+      <th>X</th>
+      <td><p>Data matrix (<code>n</code> by <code>p</code>)</p></td>
     </tr>
     <tr>
-      <th>key</th>
-      <td><p>bare/unquoted key as in <code>spread</code></p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>bare/unquoted value as in <code>spread</code></p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>additional arguments to <code>spread</code></p></td>
+      <th>y</th>
+      <td><p>Response vector (length <code>n</code>)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>spread data frame with key column retained</p>
+    <p>Vector of regression coefficients</p>
     
 
   </div>
