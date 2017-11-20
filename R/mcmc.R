@@ -31,8 +31,25 @@ mcmc_stats <- function(df_mcmc) {
 
 #' @export
 mcmc_hpd_int <- function(postr_stats) {
-  ggplot(postr_stats) +
+  p <- ggplot(postr_stats) +
     geom_pointrange(aes(param, mean, ymin = lo, ymax = hi)) +
     labs(title = "Parameter estimates with 95 HPD interval",
          y = "Value", x = "Parameter")
+
+  if ("mle" %in% colnames(postr_stats)) {
+    p <- p + geom_point(aes(param, mle), color = "red", shape = 2)
+  }
+
+  p
+}
+
+#' Sample efficiently from the MVN parameterized by Q matrix and ell vector
+#'
+#' i.e draw a single sample from \deqn{MVN(\ell Q^{-1}, Q^{-1})}
+#'
+#' @export
+rmvn_ql <- function(Q, ell) {
+  p <- dim(Q)[1]
+  ch_Q <- chol(Q)
+  backsolve(ch_Q, forwardsolve(t(ch_Q), ell) + rnorm(p))
 }

@@ -1,5 +1,9 @@
-# TODO: test and document
-
+#' Calculate the value of a quadratic form
+#'
+#' @param A Square n-by-n matrix
+#' @param x Vector of length n
+#'
+#' @return Double value of the quadratic form x'Ax
 #' @export
 quad_form <- function(A, x) {
   colSums(x * (A %*% x))
@@ -44,16 +48,54 @@ logspace <- function(start, stop, num = 15, base = 10) {
   base^seq(from = start, to = stop, length.out = num)
 }
 
+#' Create object of same shape and type as \code{x} filled with value \code{c}
+#'
+#' Again copying the Numpy zeros_like and ones_like interface
+#'
+#' @param x Object to imitiate
+#' @param c Value to fill imitation with
+#'
+#' @return Object of same shape and type as \code{x} filled with value \code{c}
 #' @export
-zeros_like <- function(x) {
-  array(0, dim(x))
+constants_like <- function(x, c) {
+  UseMethod("constants_like")
+}
+
+#' @export
+constants_like.numeric <- function(x, c) {
+  rep(c, length(x))
+}
+
+#' @export
+constants_like.matrix <- function(x, c) {
+  array(c, dim(x))
+}
+
+#' @export
+constants_like.array <- function(x, c) {
+  array(c, dim(x))
 }
 
 #' @export
 ones_like <- function(x) {
-  array(1, dim(x))
+  constants_like(x, c = 1)
 }
 
+#' @export
+zeros_like <- function(x) {
+  constants_like(x, c = 0)
+}
+
+#' Check whether all elements of array or vector like objects are the same
+#'
+#' i.e. within a small but non-zero tolerance of each other
+#'
+#' @param x First array like object
+#' @param y Second array like object
+#' @param tol Acceptable difference between individual elements of \code{x}
+#'   and \code{y}
+#' @return logical indicating if values are elementwise within \code{tol}
+#'   of each other
 #' @export
 allclose <- function(x, y, tol = 1e-12) {
   all(x - y < tol)

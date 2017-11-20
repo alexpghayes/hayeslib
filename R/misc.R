@@ -25,3 +25,18 @@ lzy_chr <- function(...) {
 rmse <- function(predicted, true) {
   sqrt(mean((predicted - true)^2))
 }
+
+
+#' Get OLS regression coefficients
+#'
+#' Assumes data matrix is tall or square, but not wide. Does not add
+#'   intercept.
+#'
+#' @param X Data matrix (\code{n} by \code{p})
+#' @param y Response vector (length \code{n})
+#'
+#' @return Vector of regression coefficients
+#' @export
+beta_ols <- function(X, y) {
+  as.numeric(solve(crossprod(X), crossprod(X, y)))
+}
