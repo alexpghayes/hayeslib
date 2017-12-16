@@ -1,12 +1,10 @@
 ## ------------------------------------------------------------------------
 library(hayeslib)
-library(tidyverse)  # hack for now
-library(coda)
 
 num_samples <- 10^2
 
-postr <- tibble(alpha = rnorm(num_samples),
-                beta = rnorm(num_samples))
+postr <- data.frame(alpha = rnorm(num_samples),
+                    beta = rnorm(num_samples))
 
 postr %>% 
   mcmc_trace()

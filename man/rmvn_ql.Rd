@@ -6,6 +6,11 @@
 \usage{
 rmvn_ql(Q, ell)
 }
+\arguments{
+\item{Q}{Precision matrix for MVN distribution}
+
+\item{ell}{Multiplicative factor combined with \code{Q} to get mean of MVN dist}
+}
 \description{
 i.e draw a single sample from \deqn{MVN(\ell Q^{-1}, Q^{-1})}
 }

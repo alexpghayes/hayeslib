@@ -2,9 +2,15 @@
 % Please edit documentation in R/arrays.R
 \name{constants_like}
 \alias{constants_like}
+\alias{ones_like}
+\alias{zeros_like}
 \title{Create object of same shape and type as \code{x} filled with value \code{c}}
 \usage{
 constants_like(x, c)
+
+ones_like(x)
+
+zeros_like(x)
 }
 \arguments{
 \item{x}{Object to imitiate}

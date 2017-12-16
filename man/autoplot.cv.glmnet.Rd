@@ -4,7 +4,7 @@
 \alias{autoplot.cv.glmnet}
 \title{Plot cross-validated elastic net paths}
 \usage{
-\method{autoplot}{cv.glmnet}(object, rule = "1-se")
+\method{autoplot}{cv.glmnet}(object, rule = "1-se", ...)
 }
 \arguments{
 \item{object}{Object of class \code{cv.glmnet}}
@@ -13,6 +13,8 @@
 selected to minimize CV error, or to find the sparsest model within one standard
 deviation of the minimum error. Default \code{cv.glmnet} behavior is to use the
 one standard error rule, following Breiman.}
+
+\item{...}{Other arguments to autoplot. Ignored.}
 }
 \value{
 ggplot2 object with elastic net paths

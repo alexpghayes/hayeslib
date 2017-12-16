@@ -1,3 +1,6 @@
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
 
 #' Generic to calculate percentages in the same vein as `dplyr::count`
 #'
@@ -11,17 +14,17 @@ perc <- function(x, ...) {
 }
 
 #' @export
-perc.numeric <- function(x) {
+perc.numeric <- function(x, ...) {
   sum(x) / length(x)
 }
 
 #' @export
-perc.logical <- function(x) {
+perc.logical <- function(x, ...) {
   sum(x) / length(x)
 }
 
 #' @export
-#' @importFrom dplyr count quos mutate select
+#' @import dplyr
 perc.default <- function(x, ...) {
   counts <- count(x, rlang::UQS(quos(...)))
   percs <- mutate(perc = n / sum(n))
@@ -50,7 +53,7 @@ num_levels <- function(df, ...) {
 #' If any of the data is non-numeric you're SOL and tranposed cols will
 #' be character as well.
 #'
-#' @param data An unfortunately transposed data frame
+#' @param df An unfortunately transposed data frame
 #'
 #' @return Transposed dataframe with appropriate column types
 #' @export
@@ -176,7 +179,7 @@ sample_n_groups <- function(df, group_var, n) {
     message("N greater than number of groups, returning original dataframe.")
     return(df)
   }
-  filter(df, (!!group_quo) %in% sample(groups, n))
+  filter(df, (!!group_var) %in% sample(groups, n))
 }
 
 #' Sample n features from a data frame randomly

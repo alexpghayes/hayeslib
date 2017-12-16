@@ -11,7 +11,7 @@ var_plot <- function(rf) {
   rf$variable.importance %>%
     tibble::enframe() %>%
     dplyr::arrange(desc(value)) %>%
-    ggplot(aes(reorder(name, value), value)) +
+    ggplot(aes(stats::reorder(name, value), value)) +
     geom_bar(stat = "identity") +
     coord_flip() +
     labs(title = "Variable Importance",
@@ -84,6 +84,7 @@ ggplot2::autoplot
 #' selected to minimize CV error, or to find the sparsest model within one standard
 #' deviation of the minimum error. Default \code{cv.glmnet} behavior is to use the
 #' one standard error rule, following Breiman.
+#' @param ... Other arguments to autoplot. Ignored.
 #'
 #' @return ggplot2 object with elastic net paths
 #' @import ggplot2 dplyr
@@ -101,7 +102,7 @@ ggplot2::autoplot
 #'
 #' autoplot(cv_model, rule = "min")
 #'
-autoplot.cv.glmnet <- function(object, rule = "1-se") {
+autoplot.cv.glmnet <- function(object, rule = "1-se", ...) {
 
   if (!inherits(object, "cv.glmnet"))
     stop("Only plots cv.glmnet objects.")

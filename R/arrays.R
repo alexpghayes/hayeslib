@@ -52,6 +52,8 @@ logspace <- function(start, stop, num = 15, base = 10) {
 #'
 #' Again copying the Numpy zeros_like and ones_like interface
 #'
+#' @rdname constants_like
+#'
 #' @param x Object to imitiate
 #' @param c Value to fill imitation with
 #'
@@ -76,11 +78,13 @@ constants_like.array <- function(x, c) {
   array(c, dim(x))
 }
 
+#' @rdname constants_like
 #' @export
 ones_like <- function(x) {
   constants_like(x, c = 1)
 }
 
+#' @rdname constants_like
 #' @export
 zeros_like <- function(x) {
   constants_like(x, c = 0)

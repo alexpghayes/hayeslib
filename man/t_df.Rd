@@ -7,7 +7,7 @@
 t_df(df)
 }
 \arguments{
-\item{data}{An unfortunately transposed data frame}
+\item{df}{An unfortunately transposed data frame}
 }
 \value{
 Transposed dataframe with appropriate column types
