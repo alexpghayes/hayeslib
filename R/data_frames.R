@@ -151,7 +151,7 @@ top_n_groups <- function(df, group_var, val_var, val_fun = sum) {
 }
 
 
-#' Select random groups from a dataframe with NSE
+#' Sample random groups from a dataframe with NSE
 #'
 #' Groups a dataframe by the specified feature, selects n of these groups and
 #' discards the rest. Returned dataframe is ungrouped.
@@ -166,9 +166,9 @@ top_n_groups <- function(df, group_var, val_var, val_fun = sum) {
 #' @importFrom magrittr "%>%"
 #'
 #' @examples
-#' rand_n_groups(mtcars, cyl, 2)
+#' sample_n_groups(mtcars, cyl, 2)
 #'
-rand_n_groups <- function(df, group_var, n) {
+sample_n_groups <- function(df, group_var, n) {
   group_var <- rlang::enquo(group_var)
   groups <- pull(distinct(df, !!group_var))
 
@@ -177,6 +177,22 @@ rand_n_groups <- function(df, group_var, n) {
     return(df)
   }
   filter(df, (!!group_quo) %in% sample(groups, n))
+}
+
+#' Sample n features from a data frame randomly
+#'
+#' @param df Data frame to sample features from
+#' @param n Number of columns to randomly select
+#'
+#' @return Sample subsample of features in a dataframe
+#' @export
+#'
+#' @examples
+#' sample_n_feats(mtcars, 3)
+sample_n_feats <- function(df, n) {
+  num_feats <- ncol(df)
+  rand_feats <- sample(num_feats, min(n, num_feats))
+  select(df, !!rand_feats)
 }
 
 

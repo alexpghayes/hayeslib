@@ -68,3 +68,80 @@ ggpie <- function(df, main, labels = NULL, condition = NULL) {
   if (!is.null(condition)) p <- p + facet_wrap(condition)
   p
 }
+
+#' @importFrom ggplot2 autoplot
+#' @export
+ggplot2::autoplot
+
+#' Plot cross-validated elastic net paths
+#'
+#' Plots paths for features in the final model in color and provides a legend
+#' for these features only. Features not in the final are plotted in grey and not
+#' included in the legend.
+#'
+#' @param object Object of class \code{cv.glmnet}
+#' @param rule Either "min" or "1-se". Specifies whether lambda should be
+#' selected to minimize CV error, or to find the sparsest model within one standard
+#' deviation of the minimum error. Default \code{cv.glmnet} behavior is to use the
+#' one standard error rule, following Breiman.
+#'
+#' @return ggplot2 object with elastic net paths
+#' @import ggplot2 dplyr
+#' @importFrom tidyr gather
+#' @export
+#'
+#' @examples
+#'
+#' library(glmnet)
+#' data(Boston, package = "MASS")
+#'
+#' X <- model.matrix(medv ~ ., Boston)
+#' y <- Boston$medv
+#' cv_model <- cv.glmnet(X, y)
+#'
+#' autoplot(cv_model, rule = "min")
+#'
+autoplot.cv.glmnet <- function(object, rule = "1-se") {
+
+  if (!inherits(object, "cv.glmnet"))
+    stop("Only plots cv.glmnet objects.")
+
+  if (rule == "min") {
+    lam <- object$lambda.min
+  } else if (rule == "1-se") {
+    lam <- object$lambda.1se
+  } else {
+    stop("rule must be either 'min' or '1-se'.")
+  }
+
+  best_lam <- which(object$glmnet.fit$lambda == lam)
+
+  selected_feats <- object$glmnet.fit$beta[, best_lam] %>%
+    broom::tidy() %>%
+    filter(x != 0) %>%
+    pull(names)
+
+  beta <- object$glmnet.fit$beta %>%
+    as.matrix() %>%
+    t() %>%
+    tibble::as_tibble() %>%
+    mutate(nll = -log(object$glmnet.fit$lambda))
+
+  selected <- beta %>%
+    select(one_of(selected_feats), nll) %>%
+    gather(feat, value, -nll)
+
+  not_selected <- beta %>%
+    select(-one_of(selected_feats), nll) %>%
+    gather(feat, value, -nll)
+
+  ggplot() +
+    geom_line(data = not_selected, aes(nll, value, group = feat), color = "grey") +
+    geom_line(data = selected, aes(nll, value, color = feat)) +
+    geom_vline(xintercept = -log(lam)) +
+    labs(title = "Elastic net paths",
+         subtitle = paste("Variables selected with", rule, "rule plotted in color"),
+         x = expression(-log(lambda)),
+         y = "Coefficient value") +
+    theme_bw()
+}

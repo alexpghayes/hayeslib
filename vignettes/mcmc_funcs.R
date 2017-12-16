@@ -3,7 +3,7 @@ library(hayeslib)
 library(tidyverse)  # hack for now
 library(coda)
 
-num_samples <- 10^3
+num_samples <- 10^2
 
 postr <- tibble(alpha = rnorm(num_samples),
                 beta = rnorm(num_samples))
