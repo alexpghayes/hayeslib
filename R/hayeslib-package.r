@@ -5,8 +5,6 @@
 #'
 #' @docType package
 #' @name hayeslib
+#' @useDynLib hayeslib, .registration = TRUE
+#' @importFrom Rcpp sourceCpp
 NULL
-
-.onAttach <- function(libname, pkgname) {
-  packageStartupMessage("Welcome to hayeslib.")
-}

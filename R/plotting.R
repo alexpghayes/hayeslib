@@ -2,7 +2,7 @@
 #'
 #' @param rf Object of class "ranger"
 #'
-#' @return \code{ggplot2} bar plot of variable importance
+#' @return `ggplot2` bar plot of variable importance
 #' @export
 #' @import ggplot2
 var_plot <- function(rf) {
@@ -79,10 +79,10 @@ ggplot2::autoplot
 #' for these features only. Features not in the final are plotted in grey and not
 #' included in the legend.
 #'
-#' @param object Object of class \code{cv.glmnet}
+#' @param object Object of class `cv.glmnet`
 #' @param rule Either "min" or "1-se". Specifies whether lambda should be
 #' selected to minimize CV error, or to find the sparsest model within one standard
-#' deviation of the minimum error. Default \code{cv.glmnet} behavior is to use the
+#' deviation of the minimum error. Default `cv.glmnet` behavior is to use the
 #' one standard error rule, following Breiman.
 #' @param ... Other arguments to autoplot. Ignored.
 #'

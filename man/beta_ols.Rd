@@ -16,5 +16,5 @@ Vector of regression coefficients
 }
 \description{
 Assumes data matrix is tall or square, but not wide. Does not add
-  intercept.
+intercept.
 }

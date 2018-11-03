@@ -7,7 +7,7 @@
 mcmc_hpd_int(postr_stats)
 }
 \arguments{
-\item{postr_stats}{Data frame returned from \code{\link{mcmc_stats}}}
+\item{postr_stats}{Data frame returned from \code{\link[=mcmc_stats]{mcmc_stats()}}}
 }
 \value{
 ggplot object

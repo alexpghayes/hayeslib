@@ -1,3 +1,23 @@
+#' @export
+yell <- function() {
+  notifier::notify(
+    title = "R Command Has Completed",
+    msg = "Time to get off Twitter"
+  )
+}
+
+#' @export
+blam <- function(object) {
+  name <- substitute(object)
+  readr::write_rds(object, paste0(name, ".rds"))
+}
+
+#' @export
+unblam <- function(object) {
+  name <- substitute(object)
+  readr::read_rds(paste0(name, ".rds"))
+}
+
 #' Create character vector without quotes
 #'
 #' Exactly the same as Hmisc::Cs except ain't nobody got time to import that.
@@ -32,8 +52,8 @@ rmse <- function(predicted, true) {
 #' Assumes data matrix is tall or square, but not wide. Does not add
 #'   intercept.
 #'
-#' @param X Data matrix (\code{n} by \code{p})
-#' @param y Response vector (length \code{n})
+#' @param X Data matrix (`n` by `p`)
+#' @param y Response vector (length `n`)
 #'
 #' @return Vector of regression coefficients
 #' @export

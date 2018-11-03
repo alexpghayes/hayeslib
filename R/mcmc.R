@@ -1,3 +1,21 @@
+#' Sample from the multivariate normal distribution
+#'
+#' @param n Number of samples to generate.
+#' @param mu Center of the distribution.
+#' @param sigma Covariance matrix.
+#'
+#' @return A matrix where each row is a sample.
+#' @export
+#'
+#' @examples
+#'
+#' rmvn(5, 1:3, diag(3))
+rmvn <- function(n, mu, sigma) {
+  mvtnorm::rmvnorm(n, mu, sigma)
+}
+
+# TODO: dmvn
+
 #' Create a trace plot from a dataframe of posterior samples
 #'
 #' @param postr Data frame of posterior samples
@@ -18,21 +36,19 @@ mcmc_trace <- function(postr) {
 #' Collect posterior samples into a list column
 #'
 #' @param df Data frame of posterior samples where each row corresponds to a sample
-#' @return Data frame with two columns: one containing parameter names, one containing
-#'   a vector of parameter samples
-#' @import tibble
-#' @importFrom purrr pmap
+#' @return Data frame with two columns: one containing parameter names,
+#'   one containing a vector of parameter samples
 #'
 #' @export
 t_mcmc <- function(df) {
-  df_t <- as_tibble(t(df))
-  tibble(param = colnames(df), samples = pmap(df_t, c))
+  df_t <- tibble::as_tibble(t(df))
+  tibble::tibble(param = colnames(df), samples = purrr::pmap(df_t, c))
 }
 
 #' Compute common statistics on posterior samples
 #'
 #' @param df_mcmc A data frame with posterior samples in a list column called
-#'   \code{samples}
+#'   `samples`
 #'
 #' @export
 #' @importFrom dplyr mutate select
@@ -46,15 +62,13 @@ mcmc_stats <- function(df_mcmc) {
     select(-hpd)
 }
 
-
-
 #' Plot 95 percent HPD credible intervals for posterior samples
 #'
-#' If the posterior sample data frame has a column \code{mle}, the column is
+#' If the posterior sample data frame has a column `mle`, the column is
 #' assumed to MLE point estimates of parameters and these are plotted next to
 #' the credible intervals as red triangles.
 #'
-#' @param postr_stats Data frame returned from \code{\link{mcmc_stats}}
+#' @param postr_stats Data frame returned from [mcmc_stats()]
 #' @return ggplot object
 #'
 #' @export
@@ -79,7 +93,7 @@ mcmc_hpd_int <- function(postr_stats) {
 #' i.e draw a single sample from \deqn{MVN(\ell Q^{-1}, Q^{-1})}
 #'
 #' @param Q Precision matrix for MVN distribution
-#' @param ell Multiplicative factor combined with \code{Q} to get mean of MVN dist
+#' @param ell Multiplicative factor combined with `Q` to get mean of MVN dist
 #'
 #' @export
 rmvn_ql <- function(Q, ell) {

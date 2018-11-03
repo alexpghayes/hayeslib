@@ -17,7 +17,7 @@ logspace(start, stop, num = 15, base = 10)
 }
 \value{
 Sequence from \code{base}^\code{start} to \code{base}^\code{stop}
-  evenly logspaced.
+evenly logspaced.
 }
 \description{
 In linear space the sequence starts at \code{base}^\code{start} and ends at

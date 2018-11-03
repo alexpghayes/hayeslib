@@ -16,7 +16,7 @@ and \code{y}}
 }
 \value{
 logical indicating if values are elementwise within \code{tol}
-  of each other
+of each other
 }
 \description{
 i.e. within a small but non-zero tolerance of each other

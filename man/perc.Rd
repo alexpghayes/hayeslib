@@ -2,7 +2,7 @@
 % Please edit documentation in R/data_frames.R
 \name{perc}
 \alias{perc}
-\title{Generic to calculate percentages in the same vein as `dplyr::count`}
+\title{Generic to calculate percentages in the same vein as \code{dplyr::count}}
 \usage{
 perc(x, ...)
 }
@@ -15,5 +15,5 @@ perc(x, ...)
 Percentage summary of \code{x}
 }
 \description{
-Generic to calculate percentages in the same vein as `dplyr::count`
+Generic to calculate percentages in the same vein as \code{dplyr::count}
 }

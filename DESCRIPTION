@@ -1,28 +1,45 @@
 Package: hayeslib
 Title: Hayeslib
-Version: 0.0.0.9000
-Authors@R: person("Alex", "Hayes", email = "alexpghayes@gmail.com", role = c("aut", "cre"))
-Description: Personal utility functions and data analyses.
+Version: 0.0.0.9001
+Authors@R: 
+    person(given = "Alex",
+           family = "Hayes",
+           role = c("aut", "cre"),
+           email = "alexpghayes@gmail.com")
+Description: Personal utility functions.
+License: MIT + file LICENSE
 Imports: 
+    broom,
+    clipr,
     dplyr (>= 0.5.0.9005),
+    fs,
     ggplot2 (>= 2.2.0),
+    googledrive,
+    kableExtra,
+    knitr,
     magrittr,
+    mvtnorm,
+    purrr,
+    Rcpp,
+    RcppArmadillo,
+    readr,
     rlang,
     tibble,
     tidyr,
-    purrr,
-    knitr,
-    kableExtra,
-    broom
-License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 6.0.1
-Suggests: 
-    rmarkdown,
-    testthat,
+    notifier
+Suggests:
+    coda,
     covr,
     glmnet,
-    coda,
-    MASS
-VignetteBuilder: knitr
+    MASS,
+    rmarkdown,
+    testthat
+LinkingTo: 
+    Rcpp,
+    RcppArmadillo
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.0

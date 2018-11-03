@@ -16,7 +16,7 @@ Suppose you generate some MCMC samples of params
 ```{r}
 library(hayeslib)
 
-num_samples <- 50
+num_samples <- 10
 
 postr <- data.frame(alpha = rnorm(num_samples),
                     beta = rnorm(num_samples))

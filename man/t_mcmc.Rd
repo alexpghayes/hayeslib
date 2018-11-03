@@ -10,8 +10,8 @@ t_mcmc(df)
 \item{df}{Data frame of posterior samples where each row corresponds to a sample}
 }
 \value{
-Data frame with two columns: one containing parameter names, one containing
-  a vector of parameter samples
+Data frame with two columns: one containing parameter names,
+one containing a vector of parameter samples
 }
 \description{
 Collect posterior samples into a list column

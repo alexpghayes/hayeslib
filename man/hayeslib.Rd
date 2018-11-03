@@ -6,5 +6,6 @@
 \alias{hayeslib-package}
 \title{hayeslib: a package to learn about packages. #meta}
 \description{
-Once the data manipulation functions get cleaned up there'll be a little explanation of what's available here.
+Once the data manipulation functions get cleaned up there'll be a
+little explanation of what's available here.
 }
